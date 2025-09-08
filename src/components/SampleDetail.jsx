@@ -3,7 +3,7 @@ import { ArrowLeft, Play, Pause, Download, Shield, AlertTriangle, CheckCircle, L
 import LicenseBadge from './LicenseBadge';
 import { usePaymentContext } from '../hooks/usePaymentContext';
 
-const SampleDetail = ({ sample, onBack }) => {
+const SampleDetail = ({ sample, onBack, onOpenWizard }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasAccess, setHasAccess] = useState(!sample.premium);
   const [isLoading, setIsLoading] = useState(false);
@@ -173,6 +173,15 @@ const SampleDetail = ({ sample, onBack }) => {
             <Download className="w-4 h-4" />
             {sample.premium && !hasAccess ? 'Purchase to Download' : 'Download Sample'}
           </button>
+          {onOpenWizard && (
+            <button 
+              onClick={onOpenWizard}
+              className="btn-secondary flex items-center gap-2"
+            >
+              <Shield className="w-4 h-4" />
+              Usage Wizard
+            </button>
+          )}
           {!sample.cleared && (
             <button className="btn-secondary flex items-center gap-2">
               <Shield className="w-4 h-4" />
