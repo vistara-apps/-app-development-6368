@@ -3,7 +3,7 @@ import { Play, Pause, Clock, Music, Key, Zap, Lock } from 'lucide-react';
 import LicenseBadge from './LicenseBadge';
 import { usePaymentContext } from '../hooks/usePaymentContext';
 
-const SampleCard = ({ sample, variant = 'default', onSampleSelect }) => {
+const SampleCard = ({ sample, variant = 'default', onSampleSelect, onOpenWizard }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasAccess, setHasAccess] = useState(!sample.premium);
   const [isLoading, setIsLoading] = useState(false);
@@ -138,9 +138,22 @@ const SampleCard = ({ sample, variant = 'default', onSampleSelect }) => {
         <span className="text-sm font-medium text-text">
           {sample.price === 0 ? 'Free' : `$${sample.price}`}
         </span>
-        <button className="btn-secondary text-sm">
-          View Details
-        </button>
+        <div className="flex gap-2">
+          {onOpenWizard && (
+            <button 
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenWizard();
+              }}
+              className="px-3 py-1 text-xs bg-accent/20 text-accent rounded hover:bg-accent/30 transition-colors"
+            >
+              Usage Guide
+            </button>
+          )}
+          <button className="btn-secondary text-sm">
+            View Details
+          </button>
+        </div>
       </div>
     </div>
   );
