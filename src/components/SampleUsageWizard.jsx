@@ -353,7 +353,7 @@ const SampleUsageWizard = ({ sample, onClose, onComplete }) => {
                         className="w-full px-3 py-2 bg-surface border border-muted-foreground/30 rounded-lg text-text focus:outline-none focus:border-primary"
                       >
                         <option value="">Select scale</option>
-                        <option value="small">Small (< 1K plays/views)</option>
+                        <option value="small">Small (&lt; 1K plays/views)</option>
                         <option value="medium">Medium (1K - 100K plays/views)</option>
                         <option value="large">Large (100K+ plays/views)</option>
                         <option value="major">Major label/commercial</option>
